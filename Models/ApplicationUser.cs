@@ -8,5 +8,6 @@ namespace capstone.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
     }
 }

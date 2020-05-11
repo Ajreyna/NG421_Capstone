@@ -294,6 +294,31 @@ namespace capstone.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("capstone.Models.Custodian", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsCurrentEmployee")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Custodians");
+                });
+
             modelBuilder.Entity("capstone.Models.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -309,26 +334,6 @@ namespace capstone.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FirstName = "Jon",
-                            LastName = "Smith"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FirstName = "Bobby",
-                            LastName = "Miller"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FirstName = "Sarah",
-                            LastName = "Brooks"
-                        });
                 });
 
             modelBuilder.Entity("capstone.Models.Teacher", b =>
@@ -346,26 +351,6 @@ namespace capstone.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FirstName = "Sam",
-                            LastName = "Smith"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FirstName = "Tom",
-                            LastName = "Miller"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FirstName = "Mary",
-                            LastName = "Brooks"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -417,6 +402,13 @@ namespace capstone.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("capstone.Models.Custodian", b =>
+                {
+                    b.HasOne("capstone.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

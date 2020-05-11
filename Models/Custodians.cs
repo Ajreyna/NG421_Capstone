@@ -15,6 +15,7 @@ namespace capstone.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsCurrentEmployee { get; set; }
-        public ApplicationUser User {get; set;}
+        public string UserId { get; set; }
+        public ApplicationUser User  {get; set;}
     }
 }

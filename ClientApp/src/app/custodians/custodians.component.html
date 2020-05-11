@@ -1,0 +1,28 @@
+<p>custodians works!</p>
+<h1 id="tableLabel">Custodians</h1>
+
+<p *ngIf="!Custodians"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="teachers">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of custodians">
+            <td>{{ s.firstName }}</td>
+            <td>{{ s.lastName }}</td>
+            <td>{{ s. isCurrentEmployee }}</td>
+            
+        </tr>
+    </tbody>
+</table>
+First Name
+<input [(ngModel)]="custodian.firstName" name="firstName" />
+Last Name
+<input [(ngModel)]="custodian.lastName" name="lastName" />
+IsCurrentEmployee
+<input [(ngModel)]="custodian.isCurrentEmployee" name="lastName" />
+<button (click)="save()">Save</button>
