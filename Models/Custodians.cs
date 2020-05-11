@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace capstone.Models
 {
-    public class Custodians
+    public class Custodian
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Guid UserId { get; set; }
+        public bool IsCurrentEmployee { get; set; }
         public ApplicationUser User {get; set;}
     }
 }
